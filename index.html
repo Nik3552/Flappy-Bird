@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Flappy Bird</title>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	<p></p>
+	<button id="start" class="button">СТАРТ</button>
+
+	<button id="shopButton" class="button">МАГАЗИН</button>
+
+	<div id="game-difficulty">
+		 <h1>Оберіть складність:</h1>
+		 <button class="difficulty-button easy" id="difficulty-button-easy">Легка</button>
+		 <button class="difficulty-button medium" id="difficulty-button-medium">Середня</button>
+		 <button class="difficulty-button hard" id="difficulty-button-hard">Висока</button>	
+	</div>
+
+	<div id="shopMenu">
+		<h1>СКІНИ</h1>
+		<button id="btn-close" class="btn-close">&times;</button>
+		<div class="button-container">
+			<button class="shop-buttons" id="pipe-skins-button">ТРУБИ</button>
+			<button class="shop-buttons" id="bird-skins-button">ПТАШКА</button>
+			<button class="shop-buttons" id="bg-skins-button">ФОН</button>
+		</div>
+		<!-- <br> -->
+		<div id="bird-skins-container">
+			<img id="bluebird" src="bluebird-midflap.png">
+			<img id="yellowbird" src="yellowbird-midflap.png">
+			<img id="redbird" src="redbird-midflap.png">
+		</div>
+		<div id="bg-skins-container">
+			<img class="bg-images" id="background-dusk-sea" src="background-dusk-sea.jpg" width="50px" height="50px">
+			<img class="bg-images" id="background-day" src="background-day.png" width="50px" height="50px">
+			<img class="bg-images" id="background-sea" src="background-sea.jpg" width="50px" height="50px">
+		</div>
+		<div id="pipe-skins-container">
+			<img class="pipe-images" id="bot-pipe-red" src="bot-pipe-red.png" width="50px" height="50px">
+			<img class="pipe-images" id="bot-pipe-green" src="botPipe.png" width="50px" height="50px">
+			<img class="pipe-images" id="bot-pipe-blue" src="bot-pipe-blue.png" width="50px" height="50px">
+			<br>
+			<img class="pipe-images-bot" id="top-pipe-red" src="top-pipe-red.png" width="0px" height="0px">
+			<img class="pipe-images-bot" id="top-pipe-green" src="topPipe.png" width="0px" height="0px">
+			<img class="pipe-images-bot" id="top-pipe-blue" src="top-pipe-blue.png" width="0px" height="0px">
+		</div>
+	</div>	
+
+	<button id="back_to_menu" class="button">Меню</button>
+	<button id="restart" class="button">Рестарт</button>
+
+	<button title="filter" class="filter" id="settingsBtn">
+  		<svg viewBox="0 0 512 512" height="1em">
+    	<path
+      	d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"
+    	></path>
+  		</svg>
+	</button>
+
+	<div id="settingsMenu">
+		<h1>НАЛАШТУВАННЯ</h1>
+		<button id="btn-close-settings" class="btn-close-settings">&times;</button>
+		<br>
+		<label for="volume">Гучінсть:</label>
+		<input type="range" id="volume" name="volume" min="0" max="100" value="50" style="width: 60%;">
+	</div>	
+
+	<label class="switch">
+  		<span class="sun"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="#ffd43b"><circle r="5" cy="12" cx="12"></circle><path d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z"></path></g></svg></span>
+  		<span class="moon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"></path></svg></span>   
+  		<input type="checkbox" class="input" id="toggleTheme">
+  		<span class="slider"></span>
+	</label>
+
+	<audio id="Music">
+  		<source src="This is Not a Ballad - True Cuckoo.mp3" type="audio/mpeg">
+	</audio>
+
+	<input type="checkbox" id="checkboxInput">
+    	<label for="checkboxInput" class="toggleSwitch">
+		<div class="speaker"><svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 75 75">
+		<path d="M39.389,13.769 L22.235,28.606 L6,28.606 L6,47.699 L21.989,47.699 L39.389,62.75 L39.389,13.769z" style="stroke:#fff;stroke-width	:5;stroke-linejoin:round;fill:#fff;"></path>
+		<path d="M48,27.6a19.5,19.5 0 0 1 0,21.4M55.1,20.5a30,30 0 0 1 0,35.6M61.6,14a38.8,38.8 0 0 1 0,48.6" style="fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round"></path>
+		</svg></div>
+		<div class="mute-speaker"><svg version="1.0" viewBox="0 0 75 75" stroke="#fff" stroke-width="5">
+		<path d="m39,14-17,15H6V48H22l17,15z" fill="#fff" stroke-linejoin="round"></path>
+		<path d="m49,26 20,24m0-24-20,24" fill="#fff" stroke-linecap="round"></path>
+		</svg></div>
+    </label> 
+
+    <!-- <div id="finalScore">
+    	<p>1231321</p>
+    </div> -->
+
+	<canvas id="canvas" width="550" height="650"></canvas>
+	<script src="script.js" type="text/javascript"></script>
+</body>
+</html>
