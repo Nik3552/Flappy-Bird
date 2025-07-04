@@ -15,6 +15,6 @@ Real-time collision detection and scoring system
 
 Fully playable in any modern browser
 
-👉 Live Demo — Try it now in your browser!
+👉 Live Demo — https://nik3552.github.io/Flappy-Bird/ — Try it now in your browser!
 
 Feel free to explore the code, contribute improvements, or fork for your own projects!
